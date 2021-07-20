@@ -1,10 +1,11 @@
 package abc.springframework.springwebapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.OnDelete;
+
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Id;
 
 @Entity
 public class Promotion {
@@ -18,17 +19,18 @@ public class Promotion {
     private String date;
     private double promoAmount;
 
-    private Set<Product> products;
+    @OneToMany(targetEntity = Product.class)
+    private Set<Product> products = new HashSet<>();
+
 
     public Promotion() {
     }
 
 
-    public Promotion(String promoName, String date, double promoAmount, Set<Product> products) {
+    public Promotion(String promoName, String date, double promoAmount) {
         this.promoName = promoName;
         this.date = date;
         this.promoAmount = promoAmount;
-        this.products = products;
     }
 
     public Long getId() {
@@ -62,6 +64,7 @@ public class Promotion {
     public void setPromoAmount(double promoAmount) {
         this.promoAmount = promoAmount;
     }
+
 
     public Set<Product> getProducts() {
         return products;

@@ -1,8 +1,6 @@
 package abc.springframework.springwebapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import javax.persistence.Id;
 
 @Entity
@@ -15,7 +13,13 @@ public class Product {
     private String productName;
     private double price;
     private String expireDate;
+
+    @Column(nullable = true)
     private double Tax;
+
+
+    @ManyToOne
+    private Promotion promotion ;
 
     public Product() {
     }
@@ -26,6 +30,8 @@ public class Product {
         this.expireDate = expireDate;
         Tax = tax;
     }
+
+
 
     public Long getId() {
         return id;
@@ -65,6 +71,14 @@ public class Product {
 
     public void setTax(double tax) {
         Tax = tax;
+    }
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
     }
 
     @Override
