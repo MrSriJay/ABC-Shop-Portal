@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class Promotion {
 
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -69,5 +69,31 @@ public class Promotion {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Promotion promotion = (Promotion) o;
+
+        return id != null ? id.equals(promotion.id) : promotion.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Promotion{" +
+                "id=" + id +
+                ", promoName='" + promoName + '\'' +
+                ", date='" + date + '\'' +
+                ", promoAmount=" + promoAmount +
+                ", products=" + products +
+                '}';
     }
 }
