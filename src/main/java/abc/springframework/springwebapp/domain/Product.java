@@ -1,17 +1,38 @@
 package abc.springframework.springwebapp.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String productName;
     private double price;
     private String expireDate;
     private double Tax;
 
+    public Product() {
+    }
+
     public Product(String productName, double price, String expireDate, double tax) {
         this.productName = productName;
         this.price = price;
         this.expireDate = expireDate;
         Tax = tax;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getProductName() {
