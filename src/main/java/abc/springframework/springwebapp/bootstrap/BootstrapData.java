@@ -23,7 +23,7 @@ public class BootstrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         // Doing Dependancy Injection
-        Product shampoo = new Product("Hair Shampoo",500.00,"2022-01-04",10);
+        Product shampoo = new Product("Slick Shampoo",500.00,"2022-01-04",10);
         Promotion shampooPromotion = new Promotion("New Year Promo","2021-01-04",200.00);
 
         shampooPromotion.getProducts().add(shampoo);
@@ -39,14 +39,14 @@ public class BootstrapData implements CommandLineRunner {
         productRepsitory.save(milk);
         promotionRepository.save(milkPromo);
 
-        Product biscuit = new Product("Bisucit Packet",60.00,"2022-01-04",0);
+        Product biscuit = new Product("Jem's Bisucit",60.00,"2022-01-04",0);
         shampooPromotion.getProducts().add(biscuit);
 
         productRepsitory.save(biscuit);
         promotionRepository.save(shampooPromotion);
 
 
-        Product Noodles = new Product("Prima Noodles Packet",80.00,"2022-01-04",5);
+        Product Noodles = new Product("Prima Noodles",80.00,"2022-01-04",5);
         productRepsitory.save(Noodles);
 
 

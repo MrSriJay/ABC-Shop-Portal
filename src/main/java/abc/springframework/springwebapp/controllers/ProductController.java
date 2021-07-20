@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class ProductController {
 
@@ -14,11 +15,12 @@ public class ProductController {
         this.productRepsitory = productRepsitory;
     }
 
+    //Get all products to view
     @RequestMapping("/products")
-    public String getproducts(Model model){
+    public String getProducts(Model model){
 
         model.addAttribute("products",productRepsitory.findAll());
-        return "products";
+        return "products/list";
     }
 
 }
