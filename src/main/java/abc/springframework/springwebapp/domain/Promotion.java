@@ -19,8 +19,10 @@ public class Promotion {
     private String date;
     private double promoAmount;
 
-    @OneToMany(targetEntity = Product.class)
-    private Set<Product> products = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name = "promotion_id")
+    private Set<Product> products = new HashSet<>() ;
 
 
     public Promotion() {
@@ -64,7 +66,6 @@ public class Promotion {
     public void setPromoAmount(double promoAmount) {
         this.promoAmount = promoAmount;
     }
-
 
     public Set<Product> getProducts() {
         return products;

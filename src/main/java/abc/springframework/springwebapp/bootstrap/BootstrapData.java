@@ -29,7 +29,26 @@ public class BootstrapData implements CommandLineRunner {
         shampooPromotion.getProducts().add(shampoo);
 
         productRepsitory.save(shampoo);
+
+
+        Product milk = new Product("Anchor Milk Packet",180.00,"2022-01-04",0);
+        Promotion milkPromo = new Promotion("Christmas Special","2021-01-04",25);
+
+        milkPromo.getProducts().add(milk);
+
+        productRepsitory.save(milk);
+        promotionRepository.save(milkPromo);
+
+        Product biscuit = new Product("Bisucit Packet",60.00,"2022-01-04",0);
+        shampooPromotion.getProducts().add(biscuit);
+
+        productRepsitory.save(biscuit);
         promotionRepository.save(shampooPromotion);
+
+
+        Product Noodles = new Product("Prima Noodles Packet",80.00,"2022-01-04",5);
+        productRepsitory.save(Noodles);
+
 
         System.out.println("Program started");
         System.out.println("Number of promotions "+promotionRepository.count());

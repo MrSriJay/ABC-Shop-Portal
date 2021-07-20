@@ -2,6 +2,8 @@ package abc.springframework.springwebapp.domain;
 
 import javax.persistence.*;
 import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -19,7 +21,8 @@ public class Product {
 
 
     @ManyToOne
-    private Promotion promotion ;
+    private Promotion promotion;
+
 
     public Product() {
     }
@@ -72,6 +75,7 @@ public class Product {
     public void setTax(double tax) {
         Tax = tax;
     }
+
 
     public Promotion getPromotion() {
         return promotion;
