@@ -20,10 +20,13 @@ public class ProductController {
     private  final PromotionRepository promotionRepository;
 
 
+
     public ProductController(ProductRepsitory productRepsitory, PromotionRepository promotionRepository) {
         this.productRepsitory = productRepsitory;
         this.promotionRepository = promotionRepository;
     }
+
+
 
     //Get all products to view
     @RequestMapping("/inventory/products")

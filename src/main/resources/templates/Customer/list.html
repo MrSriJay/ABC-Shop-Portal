@@ -48,29 +48,27 @@
                 <!-- Product List Start-->
                 <span style="font-weigth:bolder" th:text="${product.productName}"></span>
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
+                    <tr>>
                         <th>Expire Date</th>
                         <th>Price(Rs.)</th>
                         <th>Tax(Rs.)</th>
+                        <th>Promo Name</th>
                         <th>Promotion(Rs.)</th>
-                        <th>Net Total(Rs.)</th>
                         <th></th>
                     </tr>
                     <tr>
                     <tr >
-                        <td th:text="${product.id}"></td>
-                        <td th:text="${product.expireDate}"></td>
-                        <td th:text="${product.price}"></td>
-                        <td th:text="${product.tax}"></td>
-                        <td>Tax (Rs.)</td>
-                        <td>Tax (Rs.)</td>
-                        <td>Tax (Rs.)</td>
-                        <td><a  class="btn btn-warning">Buy Now</a></td>
-                    </tr>
-                    </tr>
-                </table>
-                <!-- Product List End-->
+                      <td th:text="${product.expireDate}"></td>
+                      <td th:text="${product.price}"></td>
+                      <td th:text="${product.tax}"></td>
+                      <th>Promo Name</th>
+                      <th>Promotion(Rs.)</th>
+                      <td><a  class="btn btn-warning">Buy Now</a></td>
+
+                  </tr>
+                  </tr>
+              </table>
+              <!-- Product List End-->
             </div>
         </div>
         <!-- Card Section End-->

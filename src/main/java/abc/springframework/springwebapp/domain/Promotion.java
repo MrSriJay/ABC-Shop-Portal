@@ -30,7 +30,7 @@ public class Promotion {
 
 
     @OneToMany
-    @JoinColumn(name = "promotion_id")
+    @JoinColumn(name = "promotion_id",nullable=true)
     private Set<Product> products = new HashSet<>() ;
 
 

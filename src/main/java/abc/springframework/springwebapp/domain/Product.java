@@ -29,6 +29,7 @@ public class Product {
 
 
     @ManyToOne
+
     private Promotion promotion;
 
 
