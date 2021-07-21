@@ -61,8 +61,9 @@
                     <td th:text="${promotion.start_date}"></td>
                     <td th:text="${promotion.end_date}"></td>
                     <td th:text="${promotion.promoAmount}"></td>
-                    <td><a href="" class="btn">View More</a></td>
-                </tr>
+                    <td><a th:href="@{/inventory/promotions/{id}(id=${promotion.id})}" class="btn">View More</a></td>
+
+            </tr>
                 </tr>
             </table>
             <!-- Promotion List End-->

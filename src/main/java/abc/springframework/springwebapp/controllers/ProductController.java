@@ -43,7 +43,7 @@ public class ProductController {
     }
 
 
-    //Add New Products Method
+    //Add New Product Method
     @RequestMapping(value="/inventory/products" , method= RequestMethod.POST)
     public String  createProduct( @Valid @ModelAttribute("product") Product product,  BindingResult result, Model model, RedirectAttributes redirAttrs) {
 
@@ -55,13 +55,39 @@ public class ProductController {
         return "redirect:/inventory/products";
     }
 
+    //Edit page - Product
     @GetMapping("/inventory/products/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Product product = productRepsitory.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
 
-        model.addAttribute("products", product);
+        model.addAttribute("product",product);
         return "products/edit";
+    }
+
+    //Edit Product Method
+    @PostMapping("/inventory/products/update/{id}")
+    public String updateProduct(@PathVariable("id") long id, @Valid Product product,
+                             BindingResult result, Model model,  RedirectAttributes redirAttrs) {
+        if (result.hasErrors()) {
+            product.setId(id);
+            return "redirect:/inventory/products";
+        }
+
+        productRepsitory.save(product);
+        redirAttrs.addFlashAttribute("success", "Product Updated Successfully");
+        return "redirect:/inventory/products";
+    }
+
+
+    //Delete - Product
+    @GetMapping("/inventory/products/delete/{id}")
+    public String deleteProduct(@PathVariable("id") long id, Model model, RedirectAttributes redirAttrs) {
+        Product product = productRepsitory.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+        productRepsitory.delete(product);
+        redirAttrs.addFlashAttribute("success", "Product Deleted Successfully");
+        return "redirect:/inventory/products";
     }
 
 

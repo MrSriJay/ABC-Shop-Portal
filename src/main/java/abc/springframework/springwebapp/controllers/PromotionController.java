@@ -7,10 +7,7 @@ import abc.springframework.springwebapp.repositories.PromotionRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -41,7 +38,7 @@ public class PromotionController {
 
     //Add New promotions Method
     @RequestMapping(value="/inventory/promotions" , method= RequestMethod.POST)
-    public String addUser(@ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, RedirectAttributes redirAttrs) {
+    public String addPromotion(@ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, RedirectAttributes redirAttrs) {
         if (result.hasErrors()) {
             return "redirect:/inventory/promotions/create";
         }
@@ -49,6 +46,41 @@ public class PromotionController {
         redirAttrs.addFlashAttribute("success", "Promotion Added Successfully");
         return "redirect:/inventory/promotions";
     }
+
+    //Edit page - Promotion
+    @GetMapping("/inventory/promotions/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        Promotion promotion = promotionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+
+        model.addAttribute("promotion",promotion);
+        return "promotions/edit";
+    }
+
+    //Edit Promotion Method
+    @PostMapping("/inventory/promotions/update/{id}")
+    public String updatePromotion(@PathVariable("id") long id, @Valid Promotion promotion,
+                                BindingResult result, Model model,  RedirectAttributes redirAttrs) {
+        if (result.hasErrors()) {
+            promotion.setId(id);
+            return "redirect:/inventory/promotions";
+        }
+
+        promotionRepository.save(promotion);
+        redirAttrs.addFlashAttribute("success", "Promotion Updated Successfully");
+        return "redirect:/inventory/promotions";
+    }
+
+    //Delete - Promotion
+    @GetMapping("/inventory/promotions/delete/{id}")
+    public String deletePromotionr(@PathVariable("id") long id, Model model, RedirectAttributes redirAttrs) {
+        Promotion promotion = promotionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        promotionRepository.delete(promotion);
+        redirAttrs.addFlashAttribute("success", "Promotion Deleted Successfully");
+        return "redirect:/inventory/promotions";
+    }
+
 
 
 
