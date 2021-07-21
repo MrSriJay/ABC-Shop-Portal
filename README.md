@@ -1,7 +1,7 @@
 # ABC-Shop-Portal
 
 <p>
-	ABC Portal is a Java Spring Boot based web application, which contains a Customer and Inventory portal. Shop managers can add new products to the system, they are also able to edit and update them. Futhermore they can add promotions to products as well during the seasonal times.	
+	ABC Portal is a Java Spring Boot based web application, which contains a Customer and Inventory portal. Shop managers can add new products to the system, they are also able to edit and update them. Futhermore they can add promotions to products during the seasonal times. Customers can view the products and purchase them thru the application.	
 </p>
 
 <hr>
