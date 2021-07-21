@@ -52,3 +52,9 @@ Spring Boot Test<br>
 	<li>Few Test cases yet to be implemented</li>
 </ul>
 
+
+<hr>
+
+<h4 style="text-transform: uppercase;">ER DIAGRAM AND SCREENSHOTS</h4>
+
+https://drive.google.com/file/d/1YKv6B0KgHeiafRxulOL_pOtHIaW2Xos-/view?usp=sharing
