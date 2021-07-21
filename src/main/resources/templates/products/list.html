@@ -9,34 +9,68 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>ABC SHOP</title>
+
+    <!-- Inline CSS-->
+    <style>
+        .center_align {
+                margin:top:250px;
+        }
+
+        .float_right{
+              float:right;
+        }
+    </style>
+
 </head>
 <body>
 
 <!-- Main Section Start-->
 <div class="container">
 
-    <!-- Product List Start-->
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Expire Date</th>
-            <th>Price</th>
-            <th>Tax</th>
-            <th></th>
-        </tr>
-        <tr>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.productName}"></td>
-            <td th:text="${product.expireDate}"></td>
-            <td th:text="${product.price}"></td>
-            <td th:text="${product.tax}"></td>
-            <td><a href="" class="btn">View More</a></td>
-        </tr>
-        </tr>
-    </table>
-    <!-- Product List End-->
+    <!-- Messages Start-->
+    <div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}"></div>
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+    <!-- Messages End-->
+
+    <!-- Card Section Start-->
+    <div class="card center_align">
+        <div class="card-header">
+            <div class="card_title"><h1>Products</h1></div>
+            <div class="float_right">
+                <a href="/inventory" class="btn btn-secondary" >Back</a>
+            </div>
+            <br>
+            <a href="/inventory/products/create" class="btn btn-primary" >Add New</a>
+
+        </div>
+        <div class="card-body">
+            <!-- Product List Start-->
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Expire Date</th>
+                    <th>Price</th>
+                    <th>Tax</th>
+                    <th></th>
+                </tr>
+                <tr>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.productName}"></td>
+                    <td th:text="${product.expireDate}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.tax}"></td>
+                    <td><a href="" class="btn">View More</a></td>
+                </tr>
+                </tr>
+            </table>
+            <!-- Product List End-->
+        </div>
+    </div>
+    <!-- Card Section End-->
+
+
 
 </div>
 <!-- Main Section End-->

@@ -24,7 +24,7 @@ public class BootstrapData implements CommandLineRunner {
 
         // Doing Dependancy Injection
         Product shampoo = new Product("Slick Shampoo",500.00,"2022-01-04",10);
-        Promotion shampooPromotion = new Promotion("New Year Promo","2021-01-04",200.00);
+        Promotion shampooPromotion = new Promotion("New Year Promo","2021-01-04","2021-01-04",200.00);
 
         shampooPromotion.getProducts().add(shampoo);
 
@@ -32,7 +32,7 @@ public class BootstrapData implements CommandLineRunner {
 
 
         Product milk = new Product("Anchor Milk Packet",180.00,"2022-01-04",0);
-        Promotion milkPromo = new Promotion("Christmas Special","2021-01-04",25);
+        Promotion milkPromo = new Promotion("Christmas Special","2021-01-04","2021-01-04",25);
 
         milkPromo.getProducts().add(milk);
 

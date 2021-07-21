@@ -1,23 +1,31 @@
 package abc.springframework.springwebapp.domain;
 
+
 import javax.persistence.*;
 import javax.persistence.Id;
 import java.util.HashSet;
 import java.util.Set;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Product {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String productName;
+
+    @Column(nullable = false)
     private double price;
+
+    @Column(nullable = false)
     private String expireDate;
 
     @Column(nullable = true)
-    private double Tax;
+    private double tax;
 
 
     @ManyToOne
@@ -31,7 +39,7 @@ public class Product {
         this.productName = productName;
         this.price = price;
         this.expireDate = expireDate;
-        Tax = tax;
+        this.tax = tax;
     }
 
 
@@ -68,14 +76,14 @@ public class Product {
         this.expireDate = expireDate;
     }
 
+
     public double getTax() {
-        return Tax;
+        return tax;
     }
 
     public void setTax(double tax) {
-        Tax = tax;
+        this.tax = tax;
     }
-
 
     public Promotion getPromotion() {
         return promotion;
@@ -107,7 +115,7 @@ public class Product {
                 ", productName='" + productName + '\'' +
                 ", price=" + price +
                 ", expireDate='" + expireDate + '\'' +
-                ", Tax=" + Tax +
+                ", Tax=" + tax +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package abc.springframework.springwebapp.domain;
 
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 
 import javax.persistence.*;
@@ -15,8 +16,16 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String promoName;
-    private String date;
+
+    @Column(nullable = false)
+    private String start_date;
+
+    @Column(nullable = false)
+    private String end_date;
+
+    @Column(nullable = false)
     private double promoAmount;
 
 
@@ -29,10 +38,12 @@ public class Promotion {
     }
 
 
-    public Promotion(String promoName, String date, double promoAmount) {
+    public Promotion(String promoName, String start_date, String end_date, double promoAmount) {
         this.promoName = promoName;
-        this.date = date;
+        this.start_date = start_date;
+        this.end_date = end_date;
         this.promoAmount = promoAmount;
+
     }
 
     public Long getId() {
@@ -51,12 +62,20 @@ public class Promotion {
         this.promoName = promoName;
     }
 
-    public String getDate() {
-        return date;
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
+
+    public String getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
     }
 
     public double getPromoAmount() {
@@ -95,7 +114,8 @@ public class Promotion {
         return "Promotion{" +
                 "id=" + id +
                 ", promoName='" + promoName + '\'' +
-                ", date='" + date + '\'' +
+                ", start_date='" + start_date + '\'' +
+                ", end_date='" + end_date + '\'' +
                 ", promoAmount=" + promoAmount +
                 ", products=" + products +
                 '}';
